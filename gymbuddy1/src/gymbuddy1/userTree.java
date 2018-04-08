@@ -1,6 +1,6 @@
 package gymbuddy1;
 import java.util.*;
-import java.io.*;
+
 public class userTree {
 	TreeSet<user> tree;
 	
@@ -11,7 +11,73 @@ public class userTree {
 	
 	public boolean addUser()
 	{
+		Scanner scan =new Scanner(System.in);
+		System.out.println("Please enter your username.");
+		String u= scan.nextLine();
+		System.out.println("Please enter your password.");
+		String p=scan.nextLine();
+		System.out.println("Please enter your first name.");
+		String f=scan.nextLine();
+		System.out.println("Please enter your last name.");
+		String l=scan.nextLine();
+		user u1= new user(u,p,f,l);
+		u1.id=tree.size()+1;
+		scan.close();
+		return tree.add(u1);
 		
+		
+
+		
+	}
+	
+	public void logIn()
+	{
+		
+		Scanner scan =new Scanner(System.in);
+		System.out.println("Please enter your username.");
+		String u= scan.nextLine();
+		System.out.println("Please enter your password.");
+		String p=scan.nextLine();
+		scan.close();
+		ArrayList<user> list=new ArrayList<>(tree);
+		int ct;
+		if(list.size()%2==0)
+		{
+			ct=list.size()/2;
+		}
+		else
+		{
+			ct=(list.size()/2)+1;
+		}
+		
+		
+			
+			
+			
+		for(user k: tree)
+		{
+			if(k.username.compareTo(u)==0)
+			{
+				if(k.password.compareTo(p)==0)
+				{
+					System.out.println("Login successful!");
+					return;
+				}
+				else
+				{
+					System.out.println("Incorrect login credentials.");
+					return;
+				}
+				
+			}
+			
+			
+					
+				
+			
+		}
+		System.out.println("User does not exist");
+		return;
 	}
 	
 	private class  user implements Comparable
@@ -20,6 +86,7 @@ public class userTree {
 		private String password;
 		private String firstN;
 		private String lastN;
+		private int id;
 		
 		private user(String u, String p, String f, String l)
 		{
