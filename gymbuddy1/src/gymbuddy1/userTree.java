@@ -5,7 +5,9 @@ public class userTree {
 	
 	private class  user
 	{
-		
+		private String username;
+		private String password;
+		private String firstN;
 	}
 
 }
