@@ -9,6 +9,8 @@ public class Test {
 	@org.junit.Test
 	public void test() { // adding one user
 		tree1.addUser();
+		tree1.addUser();
+		tree1.close();
 		assertTrue(tree1.tree.size()==1);
 	}
 	
