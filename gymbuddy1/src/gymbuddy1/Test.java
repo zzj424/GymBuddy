@@ -8,22 +8,23 @@ public class Test {
  
 	@org.junit.Test
 	public void test() {
-		assertTrue("Not yet implemented");
+		tree1.addUser();
+		assertTrue(tree1.tree.size()==1);
 	}
 	
 	@org.junit.Test
 	public void test2() {
-		assertTrue("Not yet implemented");
+		//assertTrue("Not yet implemented");
 	}
 	
 	@org.junit.Test
 	public void test3() {
-		assertTrue("Not yet implemented");
+		//assertTrue("Not yet implemented");
 	}
 	
 	@org.junit.Test
 	public void test4() {
-		assertTrue("Not yet implemented");
+		//assertTrue("Not yet implemented");
 	}
 
 }
