@@ -1,7 +1,18 @@
 package gymbuddy1;
 import java.util.*;
+import java.io.*;
 public class userTree {
 	TreeSet<user> tree;
+	
+	public userTree()
+	{
+		tree=new TreeSet<>();
+	}
+	
+	public boolean addUser()
+	{
+		
+	}
 	
 	private class  user implements Comparable
 	{
