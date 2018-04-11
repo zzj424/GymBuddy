@@ -3,6 +3,7 @@ import java.util.*;
 
 public class userTree {
 	TreeSet<user> tree;
+	Scanner scan;
 	
 	public userTree()
 	{
@@ -11,7 +12,8 @@ public class userTree {
 	
 	public boolean addUser()
 	{
-		Scanner scan =new Scanner(System.in);
+		scan =new Scanner(System.in);
+		
 		System.out.println("Please enter your username.");
 		String u= scan.nextLine();
 		System.out.println("Please enter your password.");
@@ -22,12 +24,15 @@ public class userTree {
 		String l=scan.nextLine();
 		user u1= new user(u,p,f,l);
 		u1.id=tree.size()+1;
-		scan.close();
 		return tree.add(u1);
 		
 		
 
 		
+	}
+	public void close()
+	{
+		scan.close();
 	}
 	
 	public void logIn()// implement binary search later!!!!
