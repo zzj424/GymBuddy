@@ -4,10 +4,23 @@ import java.util.*;
 public class userTree {
 	TreeSet<user> tree;
 	Scanner scan;
-	
+	ArrayList<user> tree2;
 	public userTree()
 	{
 		tree=new TreeSet<>();
+		tree2=new ArrayList<user>();
+	}
+	
+	public boolean addUser(String fN, String ln, String uN, String pW)
+	{
+		user u1 = new user(fN, ln, uN, pW);
+		u1.id=tree.size()+1;
+		boolean b=tree.add(u1);
+		if(b)
+		{
+			tree2=new ArrayList<>(tree);
+		}
+		return b;
 	}
 	
 	public boolean addUser()
@@ -24,7 +37,12 @@ public class userTree {
 		String l=scan.nextLine();
 		user u1= new user(u,p,f,l);
 		u1.id=tree.size()+1;
-		return tree.add(u1);
+		boolean b=tree.add(u1);
+		if(b)
+		{
+			tree2=new ArrayList<>(tree);
+		}
+		return b;
 		
 		
 
@@ -93,6 +111,10 @@ public class userTree {
 		private String firstN;
 		private String lastN;
 		private int id;
+		private Date dateExpire;
+		private boolean active;
+		private int balanceDue;
+		
 		
 		private user(String u, String p, String f, String l)
 		{
@@ -100,6 +122,45 @@ public class userTree {
 			password=p;
 			firstN=f;
 			lastN=l;
+			
+			dateExpire = new Date();
+			active = false;
+			balanceDue = 0;
+		}
+		
+		private boolean detActive()
+		{
+			
+			Date today = new Date();
+			if (today.compareTo(dateExpire) < 0)
+				active = true;
+			
+			return active;
+		}
+		
+		public int extendShip(int months)
+		{
+			dateExpire.setMonth(dateExpire.getMonth()+months);
+			balanceDue =balanceDue+ months * 50;
+			detActive();
+			return balanceDue;
+		}
+		
+		public void cancelShip()
+		{
+			int diff=0;
+			if(dateExpire.getYear()==new Date().getYear())
+			{
+				diff=Math.abs(dateExpire.getMonth()-new Date().getMonth());
+			}
+			else
+			{
+				diff=12-new Date().getMonth()+dateExpire.getMonth();
+			}
+			balanceDue=balanceDue-(diff*50);
+			dateExpire=new Date();
+			active=false;
+
 		}
 		
 		public int compareTo(Object u)
@@ -117,12 +178,19 @@ public class userTree {
 	
 	public static void main(String[] args) {
 		userTree tree1 = new userTree();
-		tree1.addUser();
-		
-		
+		tree1.addUser("lance", "ngo", "lance", "abc123");
+		//System.out.println(tree1.tree.first().extendShip(5));
+		tree1.tree.first().extendShip(12);
+		System.out.println(tree1.tree.first().active);
+		tree1.tree.first().cancelShip();
+		tree1.tree.first().detActive();
+		System.out.println(tree1.tree.first().active);
 		tree1.logIn();
 		
-		tree1.close();
+		
+		System.out.println(tree1.tree.first().balanceDue);
+
+		//tree1.close();
 		// TODO Auto-generated method stub
 
 	}
