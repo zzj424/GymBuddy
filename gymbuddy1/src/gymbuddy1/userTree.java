@@ -14,7 +14,7 @@ public class userTree {
 	{
 		scan =new Scanner(System.in);
 		
-		System.out.println("Please enter your username.");
+		System.out.println("Registering new user. Please enter your username.");
 		String u= scan.nextLine();
 		System.out.println("Please enter your password.");
 		String p=scan.nextLine();
@@ -35,11 +35,12 @@ public class userTree {
 		scan.close();
 	}
 	
+	@SuppressWarnings("unused")
 	public void logIn()// implement binary search later!!!!
 	{
 		
 		Scanner scan =new Scanner(System.in);
-		System.out.println("Please enter your username.");
+		System.out.println("Logging in. Please enter your username.");
 		String u= scan.nextLine();
 		System.out.println("Please enter your password.");
 		String p=scan.nextLine();
@@ -113,4 +114,16 @@ public class userTree {
 		}
 	}
 
+	
+	public static void main(String[] args) {
+		userTree tree1 = new userTree();
+		tree1.addUser();
+		
+		
+		tree1.logIn();
+		
+		tree1.close();
+		// TODO Auto-generated method stub
+
+	}
 }
