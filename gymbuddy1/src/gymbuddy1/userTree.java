@@ -1,5 +1,6 @@
 package gymbuddy1;
 import java.util.*;
+import java.util.Scanner;
 
 public class userTree {
 	TreeSet<user> tree;
@@ -143,7 +144,9 @@ public class userTree {
 			dateExpire.setMonth(dateExpire.getMonth()+months);
 			balanceDue =balanceDue+ months * 50;
 			detActive();
+			System.out.println("Your new expiration date is: " + dateExpire);
 			return balanceDue;
+			
 		}
 		
 		public void cancelShip()
@@ -160,6 +163,7 @@ public class userTree {
 			balanceDue=balanceDue-(diff*50);
 			dateExpire=new Date();
 			active=false;
+			System.out.println("Your new expiration date is: " + dateExpire);
 
 		}
 		
@@ -178,17 +182,43 @@ public class userTree {
 	
 	public static void main(String[] args) {
 		userTree tree1 = new userTree();
-		tree1.addUser("lance", "ngo", "lance", "abc123");
+		tree1.addUser("lance", "abc123", "lance", "ngo");
 		//System.out.println(tree1.tree.first().extendShip(5));
-		tree1.tree.first().extendShip(12);
-		System.out.println(tree1.tree.first().active);
-		tree1.tree.first().cancelShip();
-		tree1.tree.first().detActive();
-		System.out.println(tree1.tree.first().active);
 		tree1.logIn();
+		int choice = 9;
+		Scanner input = new Scanner(System.in);
+		while (choice != 0)
+		{
+			
+			System.out.print("Please select from:");
+			System.out.print("1. Extend membership");
+			System.out.print("2. Cancel membership");
+			System.out.print("0. Exit");
+			choice = input.nextInt();
+			
+			if(choice == 1)
+			{
+				int months;
+				System.out.print("extend by how many months?");
+				months = input.nextInt();
+				tree1.tree.first().extendShip(months);
+			}
+			if(choice == 2)
+			{
+				tree1.tree.first().cancelShip();
+			}
+		}
+		input.close();
+		
+		//tree1.tree.first().extendShip(12);
+		//System.out.println(tree1.tree.first().active);
+		//tree1.tree.first().cancelShip();
+		//tree1.tree.first().detActive();
+		//System.out.println(tree1.tree.first().active);
 		
 		
-		System.out.println(tree1.tree.first().balanceDue);
+		
+		//System.out.println(tree1.tree.first().balanceDue);
 
 		//tree1.close();
 		// TODO Auto-generated method stub
