@@ -10,6 +10,7 @@ public class userTree {
 	{
 		tree=new TreeSet<>();
 		tree2=new ArrayList<user>();
+		scan =new Scanner(System.in);
 	}
 	
 	public boolean addUser(String fN, String ln, String uN, String pW)
@@ -58,12 +59,11 @@ public class userTree {
 	public void logIn()// implement binary search later!!!!
 	{
 		
-		Scanner scan =new Scanner(System.in);
+		
 		System.out.println("Logging in. Please enter your username.");
 		String u= scan.nextLine();
 		System.out.println("Please enter your password.");
 		String p=scan.nextLine();
-		scan.close();
 		ArrayList<user> list=new ArrayList<>(tree);
 		int ct;
 		if(list.size()%2==0)
@@ -186,7 +186,7 @@ public class userTree {
 		//System.out.println(tree1.tree.first().extendShip(5));
 		tree1.logIn();
 		int choice = 9;
-		Scanner input = new Scanner(System.in);
+		//tree1.scan  = new Scanner(System.in);
 		while (choice != 0)
 		{
 			
@@ -194,13 +194,13 @@ public class userTree {
 			System.out.print("1. Extend membership");
 			System.out.print("2. Cancel membership");
 			System.out.print("0. Exit");
-			choice = input.nextInt();
+			choice = tree1.scan.nextInt();
 			
 			if(choice == 1)
 			{
 				int months;
 				System.out.print("extend by how many months?");
-				months = input.nextInt();
+				months = tree1.scan.nextInt();
 				tree1.tree.first().extendShip(months);
 			}
 			if(choice == 2)
@@ -208,19 +208,19 @@ public class userTree {
 				tree1.tree.first().cancelShip();
 			}
 		}
-		input.close();
-		
-		//tree1.tree.first().extendShip(12);
-		//System.out.println(tree1.tree.first().active);
-		//tree1.tree.first().cancelShip();
-		//tree1.tree.first().detActive();
-		//System.out.println(tree1.tree.first().active);
 		
 		
+		tree1.tree.first().extendShip(12);
+		System.out.println(tree1.tree.first().active);
+		tree1.tree.first().cancelShip();
+		tree1.tree.first().detActive();
+		System.out.println(tree1.tree.first().active);
 		
-		//System.out.println(tree1.tree.first().balanceDue);
+		
+		
+		System.out.println(tree1.tree.first().balanceDue);
 
-		//tree1.close();
+		tree1.close();
 		// TODO Auto-generated method stub
 
 	}
