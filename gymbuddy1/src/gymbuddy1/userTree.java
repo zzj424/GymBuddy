@@ -3,19 +3,20 @@ import java.util.*;
 import java.util.Scanner;
 
 public class userTree {
-	TreeSet<user> tree;
+	TreeSet<User> tree;
 	Scanner scan;
-	ArrayList<user> tree2;
+	ArrayList<User> tree2;
+	TreeSet<GymClass> tree3;
 	public userTree()
 	{
 		tree=new TreeSet<>();
-		tree2=new ArrayList<user>();
+		tree2=new ArrayList<User>();
 		scan =new Scanner(System.in);
 	}
 	
 	public boolean addUser(String fN, String ln, String uN, String pW)
 	{
-		user u1 = new user(fN, ln, uN, pW);
+		User u1 = new User(fN, ln, uN, pW);
 		u1.id=tree.size()+1;
 		boolean b=tree.add(u1);
 		if(b)
@@ -37,7 +38,7 @@ public class userTree {
 		String f=scan.nextLine();
 		System.out.println("Please enter your last name.");
 		String l=scan.nextLine();
-		user u1= new user(u,p,f,l);
+		User u1= new User(u,p,f,l);
 		u1.id=tree.size()+1;
 		boolean b=tree.add(u1);
 		if(b)
@@ -64,7 +65,7 @@ public class userTree {
 		String u= scan.nextLine();
 		System.out.println("Please enter your password.");
 		String p=scan.nextLine();
-		ArrayList<user> list=new ArrayList<>(tree);
+		ArrayList<User> list=new ArrayList<>(tree);
 		int ct;
 		if(list.size()%2==0)
 		{
@@ -79,7 +80,7 @@ public class userTree {
 			
 			
 			
-		for(user k: tree)
+		for(User k: tree)
 		{
 			if(k.username.compareTo(u)==0)
 			{
@@ -105,7 +106,7 @@ public class userTree {
 		return;
 	}
 	
-	private class  user implements Comparable
+	 class  User implements Comparable
 	{
 		private String username;
 		private String password;
@@ -117,7 +118,7 @@ public class userTree {
 		private int balanceDue;
 		
 		
-		private user(String u, String p, String f, String l)
+		private User(String u, String p, String f, String l)
 		{
 			username=u;
 			password=p;
@@ -169,7 +170,7 @@ public class userTree {
 		
 		public int compareTo(Object u)
 		{
-			user x=(user)u;
+			User x=(User)u;
 			if(this.username.compareTo(x.username)!=0)
 			{
 				return this.username.compareTo(x.username);
@@ -179,49 +180,40 @@ public class userTree {
 		}
 	}
 
-	
-	public static void main(String[] args) {
-		userTree tree1 = new userTree();
-		tree1.addUser("lance", "abc123", "lance", "ngo");
-		//System.out.println(tree1.tree.first().extendShip(5));
-		tree1.logIn();
-		int choice = 9;
-		//tree1.scan  = new Scanner(System.in);
-		while (choice != 0)
+	private class Staff implements Comparable
+	{
+		private String username;
+		private String password;
+		private String firstN;
+		private String lastN;
+		private int id;
+		private ArrayList<GymClass> cList;
+		
+		
+		private Staff(String u, String p, String f, String l)
 		{
-			
-			System.out.print("Please select from:");
-			System.out.print("1. Extend membership");
-			System.out.print("2. Cancel membership");
-			System.out.print("0. Exit");
-			choice = tree1.scan.nextInt();
-			
-			if(choice == 1)
-			{
-				int months;
-				System.out.print("extend by how many months?");
-				months = tree1.scan.nextInt();
-				tree1.tree.first().extendShip(months);
-			}
-			if(choice == 2)
-			{
-				tree1.tree.first().cancelShip();
-			}
+			username=u;
+			password=p;
+			firstN=f;
+			lastN=l;
+			cList=new ArrayList<>();
 		}
 		
+		public int compareTo(Object u)
+		{
+			Staff x=(Staff)u;
+			if(this.username.compareTo(x.username)!=0)
+			{
+				return this.username.compareTo(x.username);
+			}
+			else
+			return this.password.compareTo(x.password);
+		}
 		
-		tree1.tree.first().extendShip(12);
-		System.out.println(tree1.tree.first().active);
-		tree1.tree.first().cancelShip();
-		tree1.tree.first().detActive();
-		System.out.println(tree1.tree.first().active);
-		
-		
-		
-		System.out.println(tree1.tree.first().balanceDue);
-
-		tree1.close();
-		// TODO Auto-generated method stub
+	}
+	public static void main(String[] args) {
+		GymClass gm=new GymClass("idk");
+		gm.close();
 
 	}
 }
