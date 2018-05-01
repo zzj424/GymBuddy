@@ -13,7 +13,7 @@ public class LoginDao {
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/gymbuddy", "qvbingo", "ognib646");
 			
-			//prepared statement is used for secure access
+			//prepared   statement is used for secure access
 			// ? used for data to put in query
 			// actual query to execute is
 			// select * from members where username = name and password = pass

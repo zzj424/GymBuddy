@@ -217,18 +217,6 @@ public class userTree {
 		}
 		
 		
-		//tree1.tree.first().extendShip(12);
-		//System.out.println(tree1.tree.first().active);
-		//tree1.tree.first().cancelShip();
-		//tree1.tree.first().detActive();
-		//System.out.println(tree1.tree.first().active);
-		
-		
-		
-		//System.out.println(tree1.tree.first().balanceDue);
-
-		tree1.close();
-		// TODO Auto-generated method stub
-		*/
+			*/
 	}
 }
