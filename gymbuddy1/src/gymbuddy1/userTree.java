@@ -145,6 +145,7 @@ public class userTree {
 			balanceDue =balanceDue+ months * 50;
 			detActive();
 			System.out.println("Your new expiration date is: " + dateExpire);
+			System.out.println("Your new balance is: " + balanceDue);
 			return balanceDue;
 			
 		}
@@ -164,6 +165,7 @@ public class userTree {
 			dateExpire=new Date();
 			active=false;
 			System.out.println("Your new expiration date is: " + dateExpire);
+			System.out.println("Your new balance is: " + balanceDue);
 
 		}
 		
@@ -181,6 +183,11 @@ public class userTree {
 
 	
 	public static void main(String[] args) {
+		if(LoginDao.validateUser("lance", "abc123"))
+			System.out.println("login successful");
+		else
+			System.out.println("incorrect login credentials");
+		/*
 		userTree tree1 = new userTree();
 		tree1.addUser("lance", "abc123", "lance", "ngo");
 		//System.out.println(tree1.tree.first().extendShip(5));
@@ -190,10 +197,10 @@ public class userTree {
 		while (choice != 0)
 		{
 			
-			System.out.print("Please select from:");
-			System.out.print("1. Extend membership");
-			System.out.print("2. Cancel membership");
-			System.out.print("0. Exit");
+			System.out.println("Please select from:");
+			System.out.println("1. Extend membership");
+			System.out.println("2. Cancel membership");
+			System.out.println("0. Exit");
 			choice = tree1.scan.nextInt();
 			
 			if(choice == 1)
@@ -210,18 +217,18 @@ public class userTree {
 		}
 		
 		
-		tree1.tree.first().extendShip(12);
-		System.out.println(tree1.tree.first().active);
-		tree1.tree.first().cancelShip();
-		tree1.tree.first().detActive();
-		System.out.println(tree1.tree.first().active);
+		//tree1.tree.first().extendShip(12);
+		//System.out.println(tree1.tree.first().active);
+		//tree1.tree.first().cancelShip();
+		//tree1.tree.first().detActive();
+		//System.out.println(tree1.tree.first().active);
 		
 		
 		
-		System.out.println(tree1.tree.first().balanceDue);
+		//System.out.println(tree1.tree.first().balanceDue);
 
 		tree1.close();
 		// TODO Auto-generated method stub
-
+		*/
 	}
 }
