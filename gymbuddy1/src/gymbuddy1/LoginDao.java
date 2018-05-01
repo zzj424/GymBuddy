@@ -7,7 +7,7 @@ public class LoginDao {
 	public static boolean validateUser(String name, String pw) {
 		boolean validLogin = false;
 		try {
-			//defining db driver to use
+			//defining sql db driver to use
 			Class.forName("com.mysql.jdbc.Driver"); 
 			
 			Connection con = DriverManager.getConnection(

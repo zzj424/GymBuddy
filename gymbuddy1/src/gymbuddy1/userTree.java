@@ -192,6 +192,7 @@ public class userTree {
 		tree1.addUser("lance", "abc123", "lance", "ngo");
 		//System.out.println(tree1.tree.first().extendShip(5));
 		tree1.logIn();
+		//
 		int choice = 9;
 		//tree1.scan  = new Scanner(System.in);
 		while (choice != 0)
